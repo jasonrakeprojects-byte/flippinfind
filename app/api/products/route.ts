@@ -3,8 +3,6 @@ import { fetchSellerListings } from "@/lib/ebay";
 import { seedProducts, PRODUCT_DISCLAIMER } from "@/data/products";
 import type { Product } from "@/data/types";
 
-export const runtime = "edge";
-
 export async function GET() {
   const ebayItems = await fetchSellerListings();
 

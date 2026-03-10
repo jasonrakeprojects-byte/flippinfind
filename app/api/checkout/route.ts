@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { createCheckoutSession } from "@/lib/stripe";
 import type { CheckoutLineItem } from "@/lib/stripe";
 
-export const runtime = "edge";
-
 interface CheckoutBody {
   lineItems: CheckoutLineItem[];
   shippingMethod: "ship" | "local_pickup";
