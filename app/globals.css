@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-bungee: 'Bungee', cursive;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-cream text-charcoal font-body antialiased;
+  }
+
+  h1, h2, h3 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-orange text-white font-body font-semibold px-6 py-3 rounded-lg
+           hover:bg-orange/90 active:scale-95 transition-all duration-150
+           inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-navy text-white font-body font-semibold px-6 py-3 rounded-lg
+           hover:bg-navy/90 active:scale-95 transition-all duration-150
+           inline-flex items-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-navy text-navy font-body font-semibold px-6 py-3 rounded-lg
+           hover:bg-navy hover:text-white active:scale-95 transition-all duration-150
+           inline-flex items-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl
+           transition-shadow duration-300;
+  }
+
+  .badge-new {
+    @apply bg-yellow text-charcoal text-xs font-body font-bold px-2 py-1
+           rounded-full uppercase tracking-wide;
+  }
+
+  .badge-pickup {
+    @apply bg-navy text-white text-xs font-body font-semibold px-2 py-1
+           rounded-full;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl text-navy mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-charcoal/70 text-lg mb-8;
+  }
+
+  /* Polaroid-style image frame */
+  .polaroid {
+    @apply bg-white p-3 pb-8 shadow-md rotate-1 hover:rotate-0 transition-transform duration-200;
+  }
+
+  .polaroid:nth-child(even) {
+    @apply -rotate-1 hover:rotate-0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F0E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF6200;
+  border-radius: 3px;
+}
