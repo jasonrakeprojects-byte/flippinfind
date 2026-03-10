@@ -51,7 +51,7 @@ export async function createCheckoutSession(
               shipping_rate_data: {
                 type: "fixed_amount",
                 fixed_amount: { amount: 0, currency: "usd" },
-                display_name: "Local Pickup — Juneau, WI (Free)",
+                display_name: "Local Pickup — Iron Ridge, WI (Free)",
               },
             },
           ]
