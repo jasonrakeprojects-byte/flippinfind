@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.ebayimg.com",
       },
+      {
+        // Spotify album art CDN
+        protocol: "https",
+        hostname: "i.scdn.co",
+      },
     ],
     unoptimized: true,
   },

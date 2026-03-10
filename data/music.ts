@@ -7,9 +7,7 @@ export const artists: Artist[] = [
     description:
       "Roots rock with a dusty attic soul. Grandpa's Jetpack blends vintage Americana with wry Wisconsin humor. Expect honky-tonk piano, slide guitar, and stories pulled straight from the farm.",
     albumArt: "/music/grandpas-jetpack.jpg",
-    spotifyUrl: "https://open.spotify.com",
-    itunesUrl: "https://music.apple.com",
-    amazonUrl: "https://music.amazon.com",
+    spotifyArtistId: "3wWLmdUgI7OmzStTFE3aB2",
   },
   {
     name: "Silver Wake Syndicate",
@@ -17,9 +15,7 @@ export const artists: Artist[] = [
     description:
       "Lake-country blues rock with a heavy groove. Silver Wake Syndicate plays the kind of music you hear drifting across the water on a summer night — raw, honest, and impossible to ignore.",
     albumArt: "/music/silver-wake-syndicate.jpg",
-    spotifyUrl: "https://open.spotify.com",
-    itunesUrl: "https://music.apple.com",
-    amazonUrl: "https://music.amazon.com",
+    spotifyArtistId: "16eAm5k8AJ9wT161rI3NHi",
   },
   {
     name: "Sisissippi Skies",
@@ -27,9 +23,7 @@ export const artists: Artist[] = [
     description:
       "Indie folk with a Mississippi Delta twist, born and raised in Wisconsin. Sisissippi Skies weaves fingerpicked guitar and layered harmonies into songs about home, leaving, and finding your way back.",
     albumArt: "/music/sisissippi-skies.jpg",
-    spotifyUrl: "https://open.spotify.com",
-    itunesUrl: "https://music.apple.com",
-    amazonUrl: "https://music.amazon.com",
+    spotifyArtistId: "1FUTN097qvjpNvAArpqRlm",
   },
   {
     name: "Rosehaven Echo",
@@ -37,8 +31,6 @@ export const artists: Artist[] = [
     description:
       "Dream-pop and shoegaze drifting through the Wisconsin pines. Rosehaven Echo builds walls of warm reverb over delicate melodies — music for golden-hour drives on back roads.",
     albumArt: "/music/rosehaven-echo.jpg",
-    spotifyUrl: "https://open.spotify.com",
-    itunesUrl: "https://music.apple.com",
-    amazonUrl: "https://music.amazon.com",
+    spotifyArtistId: "0I56Sg6Li1pInLmn8F7ilG",
   },
 ];

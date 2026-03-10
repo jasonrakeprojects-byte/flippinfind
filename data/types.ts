@@ -23,9 +23,21 @@ export interface Artist {
   slug: string;
   description: string;
   albumArt: string;
-  spotifyUrl?: string;
-  itunesUrl?: string;
-  amazonUrl?: string;
+  spotifyArtistId: string;
+}
+
+export interface SpotifyRelease {
+  id: string;
+  name: string;
+  type: string; // "album" | "single" | "compilation"
+  releaseDate: string;
+  coverUrl: string;
+  spotifyUrl: string;
+  smartUrl: string; // album.link smart link — works on Spotify, Apple Music, Amazon, etc.
+  trackCount: number;
+  artistName: string;
+  artistSlug: string;
+  artistSpotifyId: string;
 }
 
 export interface Book {
