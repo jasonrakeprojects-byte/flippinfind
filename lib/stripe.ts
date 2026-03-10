@@ -1,9 +1,15 @@
 import Stripe from "stripe";
 
-// Stripe is initialized server-side only (API routes / Server Components)
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2025-02-24.acacia",
-});
+// Lazy singleton — avoids instantiation at build time when env vars aren't set
+let _stripe: Stripe | null = null;
+function getStripe(): Stripe {
+  if (!_stripe) {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
+    _stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia" });
+  }
+  return _stripe;
+}
 
 export interface CheckoutLineItem {
   name: string;
@@ -18,7 +24,7 @@ export async function createCheckoutSession(
   successUrl: string,
   cancelUrl: string
 ) {
-  const session = await stripe.checkout.sessions.create({
+  const session = await getStripe().checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: lineItems.map((item) => ({
       price_data: {
