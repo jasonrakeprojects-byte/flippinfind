@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: { absolute: "FlippinFind — Storage Unit Treasures & Thrift Flips, Iron Ridge WI" },
   description:
-    "Fresh storage unit hauls dropped every weekend. Real finds, real prices — shop direct and skip the eBay fees.",
+    "Fresh storage unit finds from auctions and estate sales across Wisconsin. Real finds, real prices — shop direct and skip the eBay fees.",
 };
 
 const featuredProducts = seedProducts.slice(0, 4);
@@ -36,9 +36,9 @@ export default function HomePage() {
             </h1>
 
             <p className="font-body text-cream/80 text-lg md:text-xl max-w-lg mb-8 leading-relaxed">
-              Every weekend I hit storage-unit auctions and estate sales in
-              Wisconsin. The best stuff ends up right here — real finds, real
-              prices, zero middle-man markup.
+              I hit storage-unit auctions and estate sales across Wisconsin
+              when I need to restock. The best stuff ends up right here — real
+              finds, real prices, zero middle-man markup.
             </p>
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
@@ -176,9 +176,9 @@ export default function HomePage() {
       {/* ── Blog teaser ──────────────────────────────────────────────────── */}
       <section className="bg-cream py-16 border-t border-charcoal/10">
         <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="section-title">This Week&apos;s Haul</h2>
+          <h2 className="section-title">From the Haul</h2>
           <p className="section-subtitle">
-            Follow along as I dig through units every weekend
+            Follow along as I dig through storage units across Wisconsin
           </p>
           <Link href="/blog" className="btn-secondary">
             Read the Blog <ArrowRight size={18} />

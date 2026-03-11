@@ -12,8 +12,8 @@ export default function Footer() {
             Get First Dibs on New Finds
           </h3>
           <p className="text-white/90 font-body mb-6">
-            New storage hauls dropped every weekend. Subscribe and shop before
-            anyone else.
+            New finds added whenever I hit a fresh unit. Subscribe and be
+            first in line when new items drop.
           </p>
           <NewsletterSignup />
         </div>
@@ -26,7 +26,7 @@ export default function Footer() {
           <h4 className="font-heading text-orange text-xl mb-3">FlippinFind</h4>
           <p className="text-cream/70 text-sm font-body leading-relaxed">
             Storage unit treasures, thrift flips, and real finds from Wisconsin.
-            Every weekend I dig so you don't have to.
+            I dig through units so you don't have to.
           </p>
           <div className="flex gap-3 mt-4">
             <a

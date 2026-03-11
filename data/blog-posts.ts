@@ -6,11 +6,11 @@ export const blogPosts: BlogPost[] = [
     title: "This Week's Haul — March 2026",
     date: "2026-03-08",
     excerpt:
-      "Hit three storage units this weekend. A 1970s Pyrex set, a cast iron skillet, and a trunk full of old National Geographics. Here's the breakdown.",
+      "Hit three storage units on a recent run. A 1970s Pyrex set, a cast iron skillet, and a trunk full of old National Geographics. Here's the breakdown.",
     image: "",
     tags: ["haul", "storage unit", "pyrex", "cast iron"],
     content: `
-Every weekend I wake up early and hit the auctions. This Saturday was a good one.
+When it's time to restock, I wake up early and hit the auctions. This run was a good one.
 
 **Unit #1 — Iron Ridge, WI**
 
@@ -26,7 +26,7 @@ Mostly junk in this one, but buried under a pile of old clothes was a trunk full
 
 A broken recliner, three bags of old VHS tapes (no player to test them), and a water-damaged box of romance novels. Sometimes you win, sometimes you haul.
 
-Follow along — I drop new finds every weekend. Sign up for the newsletter to get first dibs before they sell.
+Follow along — I drop new finds whenever I hit a new unit. Sign up for the newsletter to get first dibs before they sell.
     `.trim(),
   },
   {

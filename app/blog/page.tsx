@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blog — Haul Reports & Flip Stories",
   description:
-    "Follow along as I dig through storage units every weekend in Wisconsin. Haul reports, flip stories, and finds.",
+    "Follow along as I dig through storage units across Wisconsin. Haul reports, flip stories, and finds — posted whenever I hit a new haul.",
 };
 
 export default function BlogPage() {
@@ -15,8 +15,8 @@ export default function BlogPage() {
       <div className="mb-10">
         <h1 className="section-title">Haul Reports & Flip Stories</h1>
         <p className="section-subtitle">
-          Follow along every weekend as I dig through storage units across
-          Wisconsin.
+          Follow along as I dig through storage units across Wisconsin —
+          new finds posted whenever I hit a new haul.
         </p>
       </div>
 

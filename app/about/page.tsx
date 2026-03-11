@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About — Wisconsin Storage Unit Flipper",
   description:
-    "The story behind FlippinFind. Every weekend I hit storage-unit auctions and estate sales in Wisconsin — the best stuff ends up right here.",
+    "The story behind FlippinFind. I hit storage-unit auctions and estate sales across Wisconsin when I need to restock — the best stuff ends up right here.",
 };
 
 const whyShopHere = [
@@ -34,10 +34,10 @@ export default function AboutPage() {
         <h2 className="font-heading text-2xl text-orange mb-6">The Story</h2>
         <div className="font-body text-charcoal/80 leading-relaxed space-y-4 text-lg">
           <p>
-            Every weekend I wake up early and drive out to storage-unit auctions
-            and estate sales across Wisconsin — mostly in Dodge County and the
-            surrounding area. The doors roll up, and it&apos;s like unwrapping a
-            time capsule. You never know what&apos;s inside.
+            When I need to restock, I wake up early and drive out to
+            storage-unit auctions and estate sales across Wisconsin — mostly in
+            Dodge County and the surrounding area. The doors roll up, and
+            it&apos;s like unwrapping a time capsule. You never know what&apos;s inside.
           </p>
           <p>
             The best stuff ends up right here on FlippinFind. Real finds, real
@@ -76,8 +76,8 @@ export default function AboutPage() {
           Ready to dig?
         </h2>
         <p className="font-body text-charcoal/70 mb-6">
-          New hauls dropped every weekend. Browse the shop or read the blog to
-          follow along.
+          New hauls added whenever I hit fresh units. Browse the shop or read
+          the blog to follow along.
         </p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link href="/shop" className="btn-primary">

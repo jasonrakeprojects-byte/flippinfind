@@ -60,8 +60,7 @@ export default function ContactPage() {
               </h3>
               <p className="font-body text-charcoal/80 text-sm leading-relaxed">
                 I respond to all messages within <strong>24 hours</strong>,
-                usually much faster on weekends when I&apos;m actively out
-                hunting.
+                usually much faster when I&apos;m actively out hunting.
               </p>
             </div>
           </div>

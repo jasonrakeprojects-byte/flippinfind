@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     template: "%s | FlippinFind",
   },
   description:
-    "Every weekend I hit storage-unit auctions and estate sales in Wisconsin. Real finds, real prices, zero middle-man markup. Part online thrift shop, part neighborhood rummage sale.",
+    "I hit storage-unit auctions and estate sales across Wisconsin when I need to restock. Real finds, real prices, zero middle-man markup. Part online thrift shop, part neighborhood rummage sale.",
   keywords: [
     "storage unit auction finds",
     "thrift flip",

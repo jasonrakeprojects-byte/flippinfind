@@ -81,7 +81,7 @@ export default function LocalPickupPage() {
       ) : (
         <div className="text-center py-16 text-charcoal/50">
           <p className="font-heading text-2xl mb-2">No local items right now</p>
-          <p className="font-body">Check back after the next weekend haul!</p>
+          <p className="font-body">Check back when I hit a new haul — new items are added whenever I restock!</p>
         </div>
       )}
     </div>
