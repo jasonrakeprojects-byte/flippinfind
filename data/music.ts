@@ -15,15 +15,15 @@ export const artists: Artist[] = [
     description:
       "Lake-country blues rock with a heavy groove. Silver Wake Syndicate plays the kind of music you hear drifting across the water on a summer night — raw, honest, and impossible to ignore.",
     albumArt: "/music/silver-wake-syndicate.jpg",
-    spotifyArtistId: "16eAm5k8AJ9wT161rI3NHi",
+    spotifyArtistId: "1FUTN097qvjpNvAArpqRlm", // fixed: was mapped to Rosehaven Echo
   },
   {
-    name: "Sisissippi Skies",
-    slug: "sisissippi-skies",
+    name: "Sinissippi Skies",
+    slug: "sinissippi-skies",
     description:
-      "Indie folk with a Mississippi Delta twist, born and raised in Wisconsin. Sisissippi Skies weaves fingerpicked guitar and layered harmonies into songs about home, leaving, and finding your way back.",
-    albumArt: "/music/sisissippi-skies.jpg",
-    spotifyArtistId: "1FUTN097qvjpNvAArpqRlm",
+      "Indie folk with a Mississippi Delta twist, born and raised in Wisconsin. Sinissippi Skies weaves fingerpicked guitar and layered harmonies into songs about home, leaving, and finding your way back.",
+    albumArt: "/music/sinissippi-skies.jpg",
+    spotifyArtistId: "0I56Sg6Li1pInLmn8F7ilG", // fixed: was mapped to Silver Wake Syndicate
   },
   {
     name: "Rosehaven Echo",
@@ -31,6 +31,6 @@ export const artists: Artist[] = [
     description:
       "Dream-pop and shoegaze drifting through the Wisconsin pines. Rosehaven Echo builds walls of warm reverb over delicate melodies — music for golden-hour drives on back roads.",
     albumArt: "/music/rosehaven-echo.jpg",
-    spotifyArtistId: "0I56Sg6Li1pInLmn8F7ilG",
+    spotifyArtistId: "16eAm5k8AJ9wT161rI3NHi", // fixed: was mapped to Sinissippi Skies
   },
 ];
