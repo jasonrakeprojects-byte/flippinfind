@@ -1,22 +1,33 @@
 import { artists } from "@/data/music";
-import { getAllReleasesByArtist } from "@/lib/spotify";
+import { getAllReleasesByArtist } from "@/lib/itunes";
 import { ExternalLink, Music, Disc3 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { SpotifyRelease } from "@/data/types";
+import type { ItunesRelease } from "@/data/types";
 
 export const metadata: Metadata = {
   title: "Music",
   description:
-    "Stream music from Grandpa's Jetpack, Silver Wake Syndicate, Sinissippi Skies, and Rosehaven Echo — available on Spotify, Apple Music, Amazon Music, YouTube, and more.",
+    "Stream music from Grandpa's Jetpack, Silver Wake Syndicate, Sinissippi Skies, and Rosehaven Echo — available on Apple Music, Spotify, Amazon Music, YouTube, and more.",
 };
 
-// Revalidate every hour to pick up new releases automatically
+// Re-fetch from iTunes at most once per hour — new releases appear automatically
 export const revalidate = 3600;
 
-// ── Platform buttons ──────────────────────────────────────────────────────────
+// ── Platform definitions ──────────────────────────────────────────────────────
 
 const PLATFORMS = [
+  {
+    key: "apple",
+    label: "Apple Music",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden>
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+      </svg>
+    ),
+    className: "bg-[#fc3c44] hover:bg-[#e0353c] text-white",
+    getUrl: (release: ItunesRelease) => release.appleMusicUrl,
+  },
   {
     key: "spotify",
     label: "Spotify",
@@ -26,16 +37,7 @@ const PLATFORMS = [
       </svg>
     ),
     className: "bg-[#1DB954] hover:bg-[#17a348] text-white",
-  },
-  {
-    key: "apple",
-    label: "Apple Music",
-    icon: (
-      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden>
-        <path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A4.81 4.81 0 00.05 4.822C.019 5.042 0 5.268 0 5.494V18.57c.009.207.02.415.053.62.232 1.424.994 2.493 2.21 3.197.48.277 1.004.43 1.536.52.587.103 1.18.1 1.77.1h14.847c.21-.013.42-.02.63-.045 1.047-.128 1.983-.555 2.735-1.293.817-.803 1.22-1.79 1.218-2.93V6.906c-.009-.26-.02-.52-.005-.782zM12 17.5c-3.038 0-5.5-2.462-5.5-5.5S8.962 6.5 12 6.5s5.5 2.462 5.5 5.5-2.462 5.5-5.5 5.5zm0-9c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5 3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5zm6.5-2a1 1 0 110-2 1 1 0 010 2z" />
-      </svg>
-    ),
-    className: "bg-[#fc3c44] hover:bg-[#e0353c] text-white",
+    getUrl: (release: ItunesRelease) => release.smartUrl,
   },
   {
     key: "amazon",
@@ -46,6 +48,7 @@ const PLATFORMS = [
       </svg>
     ),
     className: "bg-[#00A8E1] hover:bg-[#0090c0] text-white",
+    getUrl: (release: ItunesRelease) => release.smartUrl,
   },
   {
     key: "youtube",
@@ -56,17 +59,9 @@ const PLATFORMS = [
       </svg>
     ),
     className: "bg-[#FF0000] hover:bg-[#cc0000] text-white",
+    getUrl: (release: ItunesRelease) => release.smartUrl,
   },
 ];
-
-function getPlatformUrl(
-  release: SpotifyRelease,
-  platformKey: string
-): string {
-  if (platformKey === "spotify") return release.spotifyUrl;
-  // Apple Music, Amazon, YouTube — album.link smart page handles routing
-  return release.smartUrl;
-}
 
 // ── Release type badge ────────────────────────────────────────────────────────
 
@@ -82,8 +77,10 @@ function TypeBadge({ type }: { type: string }) {
 
 // ── Single release card ───────────────────────────────────────────────────────
 
-function ReleaseCard({ release }: { release: SpotifyRelease }) {
-  const year = release.releaseDate.split("-")[0];
+function ReleaseCard({ release }: { release: ItunesRelease }) {
+  const year = release.releaseDate
+    ? new Date(release.releaseDate).getFullYear()
+    : "";
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-charcoal/10 overflow-hidden hover:shadow-md transition-shadow flex flex-col">
@@ -96,6 +93,7 @@ function ReleaseCard({ release }: { release: SpotifyRelease }) {
             fill
             className="object-cover"
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+            unoptimized // iTunes CDN images — skip Next.js image optimization
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -108,26 +106,27 @@ function ReleaseCard({ release }: { release: SpotifyRelease }) {
         </div>
       </div>
 
-      {/* Info */}
+      {/* Info + buttons */}
       <div className="p-3 flex flex-col flex-1">
         <p className="text-xs font-body text-charcoal/40 mb-0.5">{year}</p>
         <h4 className="font-heading text-navy text-sm leading-snug mb-3 flex-1 line-clamp-2">
           {release.name}
         </h4>
 
-        {/* Platform buttons — 2×2 grid */}
+        {/* 2×2 platform button grid */}
         <div className="grid grid-cols-2 gap-1.5">
-          {PLATFORMS.map((platform) => (
+          {PLATFORMS.map((p) => (
             <a
-              key={platform.key}
-              href={getPlatformUrl(release, platform.key)}
+              key={p.key}
+              href={p.getUrl(release)}
               target="_blank"
               rel="noopener noreferrer"
-              title={`Listen on ${platform.label}`}
-              className={`flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg text-xs font-body font-semibold transition-opacity hover:opacity-90 ${platform.className}`}
+              title={`Listen on ${p.label}`}
+              className={`flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg
+                          text-xs font-body font-semibold transition-opacity hover:opacity-90 ${p.className}`}
             >
-              {platform.icon}
-              <span className="hidden sm:inline truncate">{platform.label}</span>
+              {p.icon}
+              <span className="hidden sm:inline truncate">{p.label}</span>
             </a>
           ))}
         </div>
@@ -143,11 +142,10 @@ function ArtistSection({
   releases,
   index,
 }: {
-  artist: (typeof import("@/data/music").artists)[number];
-  releases: SpotifyRelease[];
+  artist: (typeof artists)[number];
+  releases: ItunesRelease[];
   index: number;
 }) {
-  const spotifyProfileUrl = `https://open.spotify.com/artist/${artist.spotifyArtistId}`;
   const hasReleases = releases.length > 0;
 
   return (
@@ -170,18 +168,36 @@ function ArtistSection({
           </p>
         </div>
 
-        {/* Spotify profile link */}
-        <a
-          href={spotifyProfileUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-[#1DB954] hover:bg-[#17a348] text-white
-                     font-body font-semibold px-5 py-2.5 rounded-full text-sm transition-colors shrink-0 w-fit"
-        >
-          {PLATFORMS[0].icon}
-          View on Spotify
-          <ExternalLink size={13} />
-        </a>
+        {/* Platform profile links */}
+        <div className="flex flex-wrap gap-2 shrink-0">
+          {/* Apple Music search */}
+          <a
+            href={`https://music.apple.com/us/search?term=${encodeURIComponent(artist.name)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#fc3c44] hover:bg-[#e0353c] text-white
+                       font-body font-semibold px-4 py-2.5 rounded-full text-sm transition-colors"
+          >
+            {PLATFORMS[0].icon}
+            Apple Music
+            <ExternalLink size={13} />
+          </a>
+
+          {/* YouTube channel link — only shown when URL is set */}
+          {artist.youtubeChannelUrl && (
+            <a
+              href={artist.youtubeChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#FF0000] hover:bg-[#cc0000] text-white
+                         font-body font-semibold px-4 py-2.5 rounded-full text-sm transition-colors"
+            >
+              {PLATFORMS[3].icon}
+              YouTube
+              <ExternalLink size={13} />
+            </a>
+          )}
+        </div>
       </div>
 
       {/* Releases grid */}
@@ -195,9 +211,10 @@ function ArtistSection({
               </h3>
               <span className="text-xs font-body text-charcoal/40 ml-1">
                 {releases.length} release{releases.length !== 1 ? "s" : ""}
-                {" · "}auto-updated from Spotify
+                {" · "}via Apple Music
               </span>
             </div>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
               {releases.map((release) => (
                 <ReleaseCard key={release.id} release={release} />
@@ -208,16 +225,8 @@ function ArtistSection({
           <div className="flex items-center gap-3 text-charcoal/50 font-body text-sm py-2">
             <Music size={16} />
             <span>
-              No releases found yet — check back soon, or{" "}
-              <a
-                href={spotifyProfileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-orange hover:underline"
-              >
-                follow on Spotify
-              </a>{" "}
-              to catch new drops.
+              No releases found yet — music will appear here automatically once
+              distributed to Apple Music via DistroKid.
             </span>
           </div>
         )}
@@ -226,7 +235,7 @@ function ArtistSection({
   );
 }
 
-// ── Page ─────────────────────────────────────────────────────────────────────
+// ── Page ──────────────────────────────────────────────────────────────────────
 
 export default async function MusicPage() {
   const releasesByArtist = await getAllReleasesByArtist(artists);
@@ -239,12 +248,14 @@ export default async function MusicPage() {
         <p className="section-subtitle">
           Four artists. Every platform. Stream or buy wherever you listen.
         </p>
-        {/* Platform icons */}
+
+        {/* Platform badge strip */}
         <div className="flex items-center justify-center gap-3 mt-4 flex-wrap">
           {PLATFORMS.map((p) => (
             <span
               key={p.key}
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-body font-semibold ${p.className}`}
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full
+                          text-xs font-body font-semibold ${p.className}`}
             >
               {p.icon}
               {p.label}
@@ -253,7 +264,7 @@ export default async function MusicPage() {
         </div>
       </div>
 
-      {/* Artist sections */}
+      {/* One section per artist */}
       <div className="space-y-8">
         {artists.map((artist, i) => (
           <ArtistSection

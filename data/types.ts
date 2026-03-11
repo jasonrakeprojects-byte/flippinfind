@@ -24,6 +24,21 @@ export interface Artist {
   description: string;
   albumArt: string;
   spotifyArtistId: string;
+  itunesArtistId?: number;   // optional — speeds up lookup if known
+  youtubeChannelUrl?: string; // e.g. "https://youtube.com/@ArtistHandle"
+}
+
+export interface ItunesRelease {
+  id: number;
+  name: string;
+  type: "album" | "single" | "ep";
+  releaseDate: string;
+  coverUrl: string;
+  appleMusicUrl: string;
+  smartUrl: string; // album.link — resolves to Spotify, Amazon, YouTube, etc.
+  trackCount: number;
+  artistName: string;
+  artistSlug: string;
 }
 
 export interface SpotifyRelease {
