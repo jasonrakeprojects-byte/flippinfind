@@ -7,12 +7,12 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-08",
     excerpt:
       "Hit three storage units this weekend. A 1970s Pyrex set, a cast iron skillet, and a trunk full of old National Geographics. Here's the breakdown.",
-    image: "/blog/haul-march-2026.jpg",
+    image: "",
     tags: ["haul", "storage unit", "pyrex", "cast iron"],
     content: `
 Every weekend I wake up early and hit the auctions. This Saturday was a good one.
 
-**Unit #1 — Juneau, WI**
+**Unit #1 — Iron Ridge, WI**
 
 The moment the door rolled up I could smell it — that familiar mix of old cardboard, motor oil, and treasure. Right in front was a 1970s Pyrex Friendship bowl set in near-perfect condition. Four bowls, no chips. Grabbed them for $3 in the lot. Listing them at $18.
 
@@ -35,7 +35,7 @@ Follow along — I drop new finds every weekend. Sign up for the newsletter to g
     date: "2026-03-01",
     excerpt:
       "Paid $0 for this OneStep Polaroid — it came in a box of random camera gear I bought as a lot. Here's how I researched it, cleaned it up, and priced it.",
-    image: "/blog/polaroid-flip.jpg",
+    image: "",
     tags: ["flip", "polaroid", "cameras", "how-to"],
     content: `
 I love camera lots. You pay for one good camera and everything else is free.

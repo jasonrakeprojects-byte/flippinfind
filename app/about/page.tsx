@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About FlippinFind — Wisconsin Storage Unit Flipper",
+  title: "About — Wisconsin Storage Unit Flipper",
   description:
     "The story behind FlippinFind. Every weekend I hit storage-unit auctions and estate sales in Wisconsin — the best stuff ends up right here.",
 };
@@ -13,7 +13,7 @@ const whyShopHere = [
   "Smoke-free Wisconsin storage unit finds",
   "Real photos of the actual item you receive",
   "Honest condition descriptions — no sugarcoating",
-  "Local pickup available in Juneau, WI (Dodge County)",
+  "Local pickup available in Iron Ridge, WI (Dodge County)",
   "Support a real person, not a warehouse operation",
   "Questions always answered within 24 hours",
 ];
@@ -43,14 +43,14 @@ export default function AboutPage() {
             The best stuff ends up right here on FlippinFind. Real finds, real
             prices, zero middle-man markup. I take photos of the actual item,
             describe what I see honestly, and ship it to you — or you can swing
-            by for local pickup in Juneau.
+            by for local pickup in Iron Ridge.
           </p>
           <p>
             Part online thrift shop. Part neighborhood rummage sale. Part
             treasure hunt. Come dig through the latest haul.
           </p>
           <p className="text-navy font-semibold">
-            — Jason, FlippinFind (Juneau, WI)
+            — Jason, FlippinFind (Iron Ridge, WI)
           </p>
         </div>
       </div>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "Order Confirmed — FlippinFind" };
+export const metadata: Metadata = { title: { absolute: "Order Confirmed — FlippinFind" } };
 
 export default function CheckoutSuccessPage() {
   return (
@@ -17,7 +17,7 @@ export default function CheckoutSuccessPage() {
       </p>
       <p className="font-body text-charcoal/60 mb-10">
         If you selected local pickup, I&apos;ll reach out within 24 hours to
-        schedule your pickup time in Juneau, WI.
+        schedule your pickup time in Iron Ridge, WI.
       </p>
       <div className="flex flex-wrap gap-4 justify-center">
         <Link href="/shop" className="btn-primary">

@@ -123,7 +123,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/10 py-4 px-4 text-center">
         <p className="text-cream/40 text-xs font-body">
-          © {new Date().getFullYear()} FlippinFind · Juneau, Wisconsin ·{" "}
+          © {new Date().getFullYear()} FlippinFind · Iron Ridge, Wisconsin ·{" "}
           <Link href="/policies" className="hover:text-orange transition-colors">
             Policies
           </Link>

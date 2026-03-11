@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "FlippinFind — Storage Unit Treasures & Thrift Flips, Juneau WI",
+    default: "FlippinFind — Storage Unit Treasures & Thrift Flips, Iron Ridge WI",
     template: "%s | FlippinFind",
   },
   description:
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "online rummage sale",
     "Wisconsin estate sale",
     "vintage items for sale",
-    "Juneau Wisconsin",
+    "Iron Ridge Wisconsin",
     "local pickup Wisconsin",
   ],
   openGraph: {

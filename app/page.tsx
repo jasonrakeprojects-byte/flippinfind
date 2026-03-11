@@ -5,7 +5,7 @@ import { seedProducts } from "@/data/products";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FlippinFind — Storage Unit Treasures & Thrift Flips, Juneau WI",
+  title: { absolute: "FlippinFind — Storage Unit Treasures & Thrift Flips, Iron Ridge WI" },
   description:
     "Fresh storage unit hauls dropped every weekend. Real finds, real prices — shop direct and skip the eBay fees.",
 };
@@ -80,7 +80,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-3 gap-4 text-white text-center">
           {[
             { icon: Tag, text: "No eBay markup — buy direct" },
-            { icon: MapPin, text: "Local pickup available — Juneau, WI" },
+            { icon: MapPin, text: "Local pickup available — Iron Ridge, WI" },
             { icon: Truck, text: "Nationwide shipping via USPS" },
           ].map(({ icon: Icon, text }) => (
             <div key={text} className="flex items-center justify-center gap-2 font-body font-semibold text-sm">
@@ -152,7 +152,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {[
             { href: "/shop", emoji: "🛍️", label: "Shop All", desc: "Browse every item" },
-            { href: "/local-pickup", emoji: "📍", label: "Local Pickup", desc: "Big items, Juneau WI" },
+            { href: "/local-pickup", emoji: "📍", label: "Local Pickup", desc: "Big items, Iron Ridge WI" },
             { href: "/music", emoji: "🎵", label: "Music", desc: "4 artists to stream" },
             { href: "/books", emoji: "📚", label: "Books", desc: "KDP titles on Amazon" },
           ].map((item) => (

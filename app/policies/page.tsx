@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Policies — Shipping, Returns & Privacy | FlippinFind",
+  title: "Policies — Shipping, Returns & Privacy",
 };
 
 export default function PoliciesPage() {
@@ -26,7 +26,7 @@ export default function PoliciesPage() {
               days of payment.
             </p>
             <p>
-              <strong>Local Pickup:</strong> Available in Juneau, Wisconsin
+              <strong>Local Pickup:</strong> Available in Iron Ridge, Wisconsin
               (Dodge County). Select &quot;Local Pickup&quot; at checkout —
               it&apos;s always free. After purchase, message me to schedule a
               pickup time. Pickup is by appointment only at my storage unit.

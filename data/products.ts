@@ -40,7 +40,7 @@ export const seedProducts: Product[] = [
     title: "1980s Wooden Tool Chest — 3 Drawer, Solid Oak",
     price: 65,
     images: ["/placeholder-toolchest.jpg"],
-    description: `${PRODUCT_DISCLAIMER}\n\nSolid oak tool chest from the 80s. Three drawers all open and close smoothly. Some scratches on top. LOCAL PICKUP ONLY — Juneau, WI area.`,
+    description: `${PRODUCT_DISCLAIMER}\n\nSolid oak tool chest from the 80s. Three drawers all open and close smoothly. Some scratches on top. LOCAL PICKUP ONLY — Iron Ridge, WI area.`,
     category: "Tools & Hardware",
     condition: "Fair — surface scratches, solid structure",
     isLocalPickup: true,

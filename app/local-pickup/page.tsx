@@ -4,9 +4,9 @@ import { MapPin, Clock, Phone } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Local Pickup Only — Juneau, WI",
+  title: "Local Pickup Only — Iron Ridge, WI",
   description:
-    "Large furniture and big items available for local pickup in Juneau, Wisconsin. Message for appointment.",
+    "Large furniture and big items available for local pickup in Iron Ridge, Wisconsin. Message for appointment.",
 };
 
 const localItems = seedProducts.filter((p) => p.isLocalPickup);
@@ -18,7 +18,7 @@ export default function LocalPickupPage() {
       <div className="mb-10">
         <h1 className="section-title">Local Pickup Only</h1>
         <p className="section-subtitle">
-          Furniture, large items, and anything too big to ship. Juneau, WI area.
+          Furniture, large items, and anything too big to ship. Iron Ridge, WI area.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function LocalPickupPage() {
           <div>
             <h3 className="font-heading text-orange text-lg mb-1">Location</h3>
             <p className="font-body text-cream/80 text-sm leading-relaxed">
-              Pickup at my storage unit in Juneau, Wisconsin (Dodge County).
+              Pickup at my storage unit in Iron Ridge, Wisconsin (Dodge County).
               Exact address provided after purchase.
             </p>
           </div>
@@ -59,11 +59,11 @@ export default function LocalPickupPage() {
       {/* Map embed */}
       <div className="rounded-2xl overflow-hidden mb-10 shadow-md h-64">
         <iframe
-          src="https://maps.google.com/maps?q=Juneau,+WI+53039&z=13&output=embed"
+          src="https://maps.google.com/maps?q=Iron+Ridge,+WI+53035&z=13&output=embed"
           className="w-full h-full border-0"
           loading="lazy"
           allowFullScreen
-          title="Juneau, Wisconsin map"
+          title="Iron Ridge, Wisconsin map"
         />
       </div>
 

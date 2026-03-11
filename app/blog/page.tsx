@@ -4,7 +4,7 @@ import { ArrowRight, Calendar, Tag } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog — Haul Reports & Flip Stories | FlippinFind",
+  title: "Blog — Haul Reports & Flip Stories",
   description:
     "Follow along as I dig through storage units every weekend in Wisconsin. Haul reports, flip stories, and finds.",
 };

@@ -3,7 +3,7 @@ import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Books — FlippinFind",
+  title: "Books",
   description: "Books published on Amazon KDP. Click to buy on Amazon.",
 };
 

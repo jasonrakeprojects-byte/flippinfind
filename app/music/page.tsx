@@ -6,7 +6,7 @@ import Image from "next/image";
 import type { SpotifyRelease } from "@/data/types";
 
 export const metadata: Metadata = {
-  title: "Music — FlippinFind",
+  title: "Music",
   description:
     "Stream music from Grandpa's Jetpack, Silver Wake Syndicate, Sisissippi Skies, and Rosehaven Echo — available on Spotify, Apple Music, Amazon Music, and more.",
 };
