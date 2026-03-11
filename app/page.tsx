@@ -57,17 +57,13 @@ export default function HomePage() {
               <div className="absolute top-4 left-4 w-48 h-48 bg-white/10 rounded-2xl rotate-6" />
               <div className="absolute top-8 left-8 w-48 h-48 bg-orange/20 rounded-2xl -rotate-3" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white rounded-2xl p-6 shadow-2xl text-center max-w-xs">
-                  <p className="font-heading text-4xl text-orange mb-2">🏷️</p>
-                  <p className="font-heading text-navy text-2xl">
-                    Part online thrift shop.
-                  </p>
-                  <p className="font-heading text-orange text-2xl mt-1">
-                    Part treasure hunt.
-                  </p>
-                  <p className="font-body text-charcoal/60 text-sm mt-3">
-                    Come dig through the latest haul.
-                  </p>
+                <div className="bg-white rounded-2xl p-4 shadow-2xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logo.png"
+                    alt="FlippinFind"
+                    className="w-48 md:w-60 h-auto block"
+                  />
                 </div>
               </div>
             </div>

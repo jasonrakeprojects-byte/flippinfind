@@ -25,15 +25,13 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="group flex-shrink-0">
-              <div className="bg-white rounded-xl px-2 py-1 shadow-sm group-hover:shadow-md transition-shadow">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo.png"
-                  alt="FlippinFind — Storage Unit Treasures, Iron Ridge WI"
-                  className="h-11 w-auto block"
-                />
-              </div>
+            <Link href="/" className="flex items-center gap-2 group">
+              <span className="text-2xl font-heading text-orange group-hover:text-yellow transition-colors">
+                FlippinFind
+              </span>
+              <span className="text-cream text-xs font-body hidden sm:block leading-tight">
+                Storage Unit Treasures<br />Wisconsin
+              </span>
             </Link>
 
             {/* Desktop Nav */}

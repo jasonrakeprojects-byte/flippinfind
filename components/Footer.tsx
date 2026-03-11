@@ -23,16 +23,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {/* Brand */}
         <div>
-          <Link href="/" className="inline-block mb-4">
-            <div className="bg-white rounded-xl px-3 py-2 shadow-sm hover:shadow-md transition-shadow">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/logo.png"
-                alt="FlippinFind"
-                className="h-20 w-auto block"
-              />
-            </div>
-          </Link>
+          <h4 className="font-heading text-orange text-xl mb-3">FlippinFind</h4>
           <p className="text-cream/70 text-sm font-body leading-relaxed">
             Storage unit treasures, thrift flips, and real finds from Wisconsin.
             I dig through units so you don't have to.
