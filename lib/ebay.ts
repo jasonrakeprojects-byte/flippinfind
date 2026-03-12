@@ -35,7 +35,7 @@ export interface EbayItem {
   shortDescription?: string;
 }
 
-export async function fetchSellerListings(): Promise<EbayItem[]> {
+async function fetchListings(extraParams: string): Promise<EbayItem[]> {
   const sellerId = process.env.EBAY_SELLER_USERNAME;
   if (!process.env.EBAY_APP_ID || !sellerId) {
     console.warn("eBay credentials not configured — using seed data.");
@@ -46,13 +46,13 @@ export async function fetchSellerListings(): Promise<EbayItem[]> {
     const token = await getEbayToken();
     const query = encodeURIComponent(`seller:${sellerId}`);
     const res = await fetch(
-      `${EBAY_API_BASE}/item_summary/search?q=${query}&limit=50&sort=newlyListed`,
+      `${EBAY_API_BASE}/item_summary/search?q=${query}&limit=50&sort=newlyListed${extraParams}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
           "X-EBAY-C-MARKETPLACE-ID": "EBAY_US",
         },
-        next: { revalidate: 3600 }, // cache 1 hour
+        next: { revalidate: 3600 },
       }
     );
 
@@ -67,4 +67,17 @@ export async function fetchSellerListings(): Promise<EbayItem[]> {
     console.error("eBay fetch failed:", err);
     return [];
   }
+}
+
+export async function fetchSellerListings(): Promise<EbayItem[]> {
+  return fetchListings("");
+}
+
+export async function fetchLocalPickupListings(): Promise<EbayItem[]> {
+  // Filter for items with local pickup available
+  const items = await fetchListings("&buyingOptions=LOCAL_PICKUP");
+  // Fallback: if API doesn't filter correctly, filter client-side too
+  return items.filter((item: EbayItem & { buyingOptions?: string[] }) =>
+    !item.buyingOptions || item.buyingOptions.includes("LOCAL_PICKUP")
+  );
 }

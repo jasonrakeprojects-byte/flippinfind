@@ -1,6 +1,5 @@
-import ProductCard from "@/components/ProductCard";
-import { seedProducts } from "@/data/products";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { fetchLocalPickupListings, EbayItem } from "@/lib/ebay";
+import { MapPin, Clock, Phone, ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,9 +8,50 @@ export const metadata: Metadata = {
     "Large furniture and big items available for local pickup in Iron Ridge, Wisconsin. Message for appointment.",
 };
 
-const localItems = seedProducts.filter((p) => p.isLocalPickup);
+export const revalidate = 3600; // refresh every hour
 
-export default function LocalPickupPage() {
+function EbayItemCard({ item }: { item: EbayItem }) {
+  return (
+    <a
+      href={item.itemWebUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group bg-white rounded-2xl shadow-sm border border-charcoal/10 overflow-hidden hover:shadow-md transition-shadow flex flex-col"
+    >
+      <div className="aspect-square bg-cream overflow-hidden">
+        {item.image?.imageUrl ? (
+          <img
+            src={item.image.imageUrl}
+            alt={item.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-charcoal/30 text-sm">
+            No photo
+          </div>
+        )}
+      </div>
+      <div className="p-4 flex flex-col flex-1 gap-2">
+        <p className="font-body text-sm text-charcoal line-clamp-2 flex-1">{item.title}</p>
+        {item.condition && (
+          <span className="text-xs text-charcoal/50">{item.condition}</span>
+        )}
+        <div className="flex items-center justify-between mt-auto">
+          <span className="font-heading text-lg text-navy">
+            ${parseFloat(item.price?.value ?? "0").toFixed(2)}
+          </span>
+          <span className="flex items-center gap-1 text-xs text-orange font-body">
+            View on eBay <ExternalLink size={12} />
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+}
+
+export default async function LocalPickupPage() {
+  const items = await fetchLocalPickupListings();
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header */}
@@ -68,14 +108,19 @@ export default function LocalPickupPage() {
       </div>
 
       {/* Items */}
-      <h2 className="font-heading text-2xl text-navy mb-6">
-        Available for Pickup ({localItems.length} items)
-      </h2>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="font-heading text-2xl text-navy">
+          Available for Pickup {items.length > 0 && `(${items.length} items)`}
+        </h2>
+        {items.length > 0 && (
+          <p className="font-body text-sm text-charcoal/50">Updated hourly from eBay</p>
+        )}
+      </div>
 
-      {localItems.length > 0 ? (
+      {items.length > 0 ? (
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {localItems.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {items.map((item) => (
+            <EbayItemCard key={item.itemId} item={item} />
           ))}
         </div>
       ) : (
