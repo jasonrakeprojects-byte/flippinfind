@@ -44,9 +44,10 @@ async function fetchListings(extraParams: string): Promise<EbayItem[]> {
 
   try {
     const token = await getEbayToken();
-    const query = encodeURIComponent(`seller:${sellerId}`);
+    // category_ids=0 = all categories; filter=sellers:{id} scopes to this seller
+    const sellerFilter = encodeURIComponent(`sellers:{${sellerId}}`);
     const res = await fetch(
-      `${EBAY_API_BASE}/item_summary/search?q=${query}&limit=50&sort=newlyListed${extraParams}`,
+      `${EBAY_API_BASE}/item_summary/search?category_ids=0&filter=${sellerFilter}&limit=50&sort=newlyListed${extraParams}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -74,10 +75,27 @@ export async function fetchSellerListings(): Promise<EbayItem[]> {
 }
 
 export async function fetchLocalPickupListings(): Promise<EbayItem[]> {
-  // Filter for items with local pickup available
-  const items = await fetchListings("&buyingOptions=LOCAL_PICKUP");
-  // Fallback: if API doesn't filter correctly, filter client-side too
-  return items.filter((item: EbayItem & { buyingOptions?: string[] }) =>
-    !item.buyingOptions || item.buyingOptions.includes("LOCAL_PICKUP")
-  );
+  // Append buyingOptions to the filter param (comma-separated within the filter value)
+  const sellerFilter = encodeURIComponent(`sellers:{${process.env.EBAY_SELLER_USERNAME}},buyingOptions:{LOCAL_PICKUP}`);
+  const sellerId = process.env.EBAY_SELLER_USERNAME;
+  if (!process.env.EBAY_APP_ID || !sellerId) return [];
+
+  try {
+    const token = await getEbayToken();
+    const res = await fetch(
+      `${EBAY_API_BASE}/item_summary/search?category_ids=0&filter=${sellerFilter}&limit=50&sort=newlyListed`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "X-EBAY-C-MARKETPLACE-ID": "EBAY_US",
+        },
+        next: { revalidate: 3600 },
+      }
+    );
+    if (!res.ok) return [];
+    const data = await res.json() as { itemSummaries?: EbayItem[] };
+    return data.itemSummaries ?? [];
+  } catch {
+    return [];
+  }
 }
